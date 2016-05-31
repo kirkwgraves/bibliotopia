@@ -7,7 +7,9 @@ namespace Bibliotopia.Models
 {
     public class ReadingNook
     {
-        public List<Book> ReadBooks { get; set; }
+        public int ReadingNookId { get; set; }
+        public List<Book> FavoriteBooks { get; set; }
         public List<Book> BooksToRead { get; set; }
+
     }
 }
