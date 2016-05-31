@@ -16,8 +16,8 @@ namespace Bibliotopia.DAL
         {
         }
 
-        public DbSet<Book> Books { get; set; }
-        public DbSet<ReadingNook> ReadingNooks { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<ReadingNook> ReadingNooks { get; set; }
 
     }
 }
