@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4D88DA1F-78B4-47E3-AF0C-52254B73394C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F3580B3-E339-4645-A427-196F54FEBE08}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Bibliotopia", "src\Bibliotopia\Bibliotopia.xproj", "{BD889E8F-F3F2-4655-A245-F609281437AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD889E8F-F3F2-4655-A245-F609281437AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD889E8F-F3F2-4655-A245-F609281437AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD889E8F-F3F2-4655-A245-F609281437AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD889E8F-F3F2-4655-A245-F609281437AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD889E8F-F3F2-4655-A245-F609281437AD} = {4D88DA1F-78B4-47E3-AF0C-52254B73394C}
+	EndGlobalSection
+EndGlobal
