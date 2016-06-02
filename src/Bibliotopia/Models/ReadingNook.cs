@@ -10,6 +10,6 @@ namespace Bibliotopia.Models
         public int ReadingNookId { get; set; }
         public List<Book> FavoriteBooks { get; set; }
         public List<Book> BooksToRead { get; set; }
-
+        public ApplicationUser UserId { get; set; }
     }
 }
