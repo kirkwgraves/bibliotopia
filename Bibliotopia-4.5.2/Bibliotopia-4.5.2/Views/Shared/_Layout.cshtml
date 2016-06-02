@@ -16,7 +16,7 @@
       <div class="nav-wrapper">
         <a class="brand-logo">Bibliotopia</a>
       </div>
-      @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+      @Html.ActionLink("Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
       <ul class="right">
         <ul class="nav navbar-nav">
           <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -31,6 +31,6 @@
 
   @Scripts.Render("~/bundles/jquery")
   @Scripts.Render("~/bundles/materialize")
-  @RenderSection("scripts", required: true)
+  @RenderSection("scripts", required: false)
 </body>
 </html>
