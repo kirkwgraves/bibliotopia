@@ -7,8 +7,8 @@ namespace Bibliotopia_4._5._2.Models
 {
     public class FavoriteBook
     {
-        public int FavoriteBookId { get; set; }
-        public Book Book { get; set; }
-        public ReadingNook ReadingNook { get; set; }
+        public virtual int FavoriteBookId { get; set; }
+        public virtual Book Book { get; set; }
+        public virtual ReadingNook ReadingNook { get; set; }
     }
 }

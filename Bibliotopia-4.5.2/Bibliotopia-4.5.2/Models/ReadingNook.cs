@@ -7,9 +7,19 @@ namespace Bibliotopia_4._5._2.Models
 {
     public class ReadingNook
     {
-        public int ReadingNookId { get; set; }
-        public FavoriteBook FavoriteBook { get; set; }
-        public BookToRead BookToRead { get; set; }
+        public virtual ApplicationUser Id { get; set; }
+        public virtual FavoriteBook FavoriteBook { get
+            {
+                throw new NotImplementedException();
+            }
+        }
+        public virtual BookToRead BookToRead { get
+            {
+                throw new NotImplementedException();
+                // Write LINQ expression to retrieve collection
+            }
+        }
 
+        // Reseach composite key vs. surrogate key
     }
 }
