@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bibliotopia_4._5._2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,9 +21,27 @@ namespace Bibliotopia_4._5._2.DAL
             context = _context;
         }
 
-        public int GetFavoriteBookCount()
+          // Check out AspNet.Identity namespace 
+            // GetUser Id
+            // GetUserById
+
+
+        public int GetFavoriteBookCountForUser(ApplicationUser user)
         {
-            return context.FavoriteBooks.Count();
+            IQueryable<FavoriteBook> favorites_query =
+                from faves in context.FavoriteBooks
+                where faves.Owner.Id == user.Id
+                select faves;
+            return favorites_query.ToList().Count();
+        }
+
+        public int GetBookToReadCountForUser(ApplicationUser user)
+        {
+            IQueryable<BookToRead> books_to_read_query =
+                from books in context.BooksToRead
+                where books.Owner.Id == user.Id
+                select books;
+            return books_to_read_query.ToList().Count();
         }
     }
 }
