@@ -60,9 +60,19 @@ namespace Bibliotopia_4._5._2.Tests.DAL
             book_data = books_datasource.AsQueryable();
         }
 
-        [TestMethod]
-        public void TestMethod1()
+        [TestCleanup]
+        public void Cleanup()
         {
+            readingNooks_datasource = null;
+            favoriteBooks_datasource = null;
+            booksToRead_datasource = null;
+            books_datasource = null;
+        }
+
+        [TestMethod]
+        void ConnectMocksToDatastore() // Utility method
+        {
+
         }
     }
 }
