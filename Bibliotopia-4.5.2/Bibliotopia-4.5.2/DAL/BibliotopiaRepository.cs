@@ -1,6 +1,7 @@
 ﻿using Bibliotopia_4._5._2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,10 @@ namespace Bibliotopia_4._5._2.DAL
     public class BibliotopiaRepository
     {
         private BibliotopiaContext context;
+        public IDbSet<ApplicationUser> Users
+        {
+            get { return context.Users; }
+        }
 
         public BibliotopiaRepository()
         {
@@ -21,6 +26,10 @@ namespace Bibliotopia_4._5._2.DAL
             context = _context;
         }
 
+        public ApplicationUser GetUser(string user_id)
+        {
+            return context.Users.FirstOrDefault(i => i.Id == user_id);
+        }
           // Check out AspNet.Identity namespace 
             // GetUser Id
             // GetUserById

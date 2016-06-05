@@ -11,17 +11,15 @@
 
 </head>
 <body>
-  <div class="navbar-fixed-top">
+  <div class="navbar-fixed">
     <nav class="light-blue">
       <div class="nav-wrapper">
         <a class="brand-logo">Bibliotopia</a>
       </div>
-      @Html.ActionLink("Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
       <ul class="right">
         <ul class="nav navbar-nav">
-          <li>@Html.ActionLink("Home", "Index", "Home")</li>
-          <li>@Html.ActionLink("About", "About", "Home")</li>
-          <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </ul>
       @Html.Partial("_LoginPartial")
