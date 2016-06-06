@@ -106,7 +106,29 @@ namespace Bibliotopia_4._5._2.Tests.DAL
             mock_books_table.As<IQueryable<Book>>().Setup(m => m.Provider).Returns(book_data.Provider);
 
             // Tells mocked BibliotopiaContext to use fully mocked datasource (List<Book>)
-            mock_context.Setup(m => m.Books).Returns(mock_books_table.Object); 
+            mock_context.Setup(m => m.Books).Returns(mock_books_table.Object);
+
+            // Hijack the call to the Add method for each type and put in the list using the List type's Add method
+            mock_readingNooks_table.Setup(m => m.Add(It.IsAny<ReadingNook>())).Callback((ReadingNook readingNook) => readingNooks_datasource.Add(readingNook));
+            mock_favoriteBooks_table.Setup(m => m.Add(It.IsAny<FavoriteBook>())).Callback((FavoriteBook favoriteBook) => favoriteBooks_datasource.Add(favoriteBook));
+            mock_booksToRead_table.Setup(m => m.Add(It.IsAny<BookToRead>())).Callback((BookToRead bookToRead) => booksToRead_datasource.Add(bookToRead));
+            mock_books_table.Setup(m => m.Add(It.IsAny<Book>())).Callback((Book book) => books_datasource.Add(book));
         }
+
+        [TestMethod]
+        public void RepoEnsureICanCreateInstance()
+        {
+            // Assert
+            Assert.IsNotNull(repo);
+        }
+
+        [TestMethod]
+        public void RepoEnsureIsUsingContext()
+        {
+            // Assert
+            Assert.IsNotNull(repo.context);
+        }
+
+
     }
 }

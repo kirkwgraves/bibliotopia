@@ -9,7 +9,7 @@ namespace Bibliotopia_4._5._2.DAL
 {
     public class BibliotopiaRepository
     {
-        private BibliotopiaContext context;
+        public BibliotopiaContext context;
         public IDbSet<ApplicationUser> Users
         {
             get { return context.Users; }
