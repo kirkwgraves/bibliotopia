@@ -57,5 +57,16 @@ namespace Bibliotopia_4._5._2.DAL
         {
             return context.ReadingNooks.ToList();
         }
+
+        public void AddReadingNook(ReadingNook new_nook)
+        {
+            context.ReadingNooks.Add(new_nook);
+            context.SaveChanges();
+        }
+
+        public int GetReadingNookCount()
+        {
+            return context.ReadingNooks.Count();
+        }
     }
 }
