@@ -129,6 +129,19 @@ namespace Bibliotopia_4._5._2.Tests.DAL
             Assert.IsNotNull(repo.context);
         }
 
+        [TestMethod]
+        public void RepoEnsureThereAreNoReadingNooks()
+        {
+            // Arrange
+            ConnectMocksToDatastore();
+
+            // Act
+            List<ReadingNook> list_of_reading_nooks = repo.GetReadingNooks();
+            List<ReadingNook> expected = new List<ReadingNook>();
+
+            // Assert
+            Assert.AreEqual(list_of_reading_nooks.Count, expected.Count);
+        }
 
     }
 }

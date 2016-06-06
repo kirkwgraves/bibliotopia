@@ -9,9 +9,9 @@ namespace Bibliotopia_4._5._2.DAL
 {
     public class BibliotopiaContext : ApplicationDbContext
     {
-        public DbSet<Book> Books { get; set; }
-        public DbSet<ReadingNook> ReadingNooks { get; set; }
-        public DbSet<FavoriteBook> FavoriteBooks { get; set; }
-        public DbSet<BookToRead> BooksToRead { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<ReadingNook> ReadingNooks { get; set; }
+        public virtual DbSet<FavoriteBook> FavoriteBooks { get; set; }
+        public virtual DbSet<BookToRead> BooksToRead { get; set; }
     }
 }

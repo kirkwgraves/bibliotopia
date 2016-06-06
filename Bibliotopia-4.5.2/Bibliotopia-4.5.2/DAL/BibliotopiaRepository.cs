@@ -52,5 +52,10 @@ namespace Bibliotopia_4._5._2.DAL
                 select books;
             return books_to_read_query.ToList().Count();
         }
+
+        public List<ReadingNook> GetReadingNooks()
+        {
+            return context.ReadingNooks.ToList();
+        }
     }
 }
