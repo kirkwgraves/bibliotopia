@@ -143,5 +143,40 @@ namespace Bibliotopia_4._5._2.Tests.DAL
             Assert.AreEqual(list_of_reading_nooks.Count, expected.Count);
         }
 
+        [TestMethod]
+        public void RepoEnsureReadingNookCountIsZero()
+        {
+            // Arrange
+            ConnectMocksToDatastore();
+
+            // Act
+            int expected = 0;
+            int actual = repo.GetReadingNooks().Count();
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RepoEnsureICanAddReadingNook()
+        {
+            // Arrange
+            ConnectMocksToDatastore();
+
+            // Act
+            var reading_nook = new ReadingNook
+            {
+                FavoriteBook = new FavoriteBook { FavoriteBookId = 1, Book = new Book { Title = "The Sound and the Fury", Author = "William Faulkner", ISBN = 9999999, Synopsis = "Southern gothic tale of decay", Reaction = "Great book", ViewerId = 87654321, BookId = 2 } },
+                BookToRead = new BookToRead { BookToReadId = 1, Book = new Book { Title = "To Kill a Mockingbird", Author = "Harper Lee", ISBN = 1234567, Synopsis = "Story of justice in small town", Reaction = "Loved it", ViewerId = 12345678, BookId = 1 } }
+            };
+            repo.AddReadingNook(reading_nook);
+
+            int actual = repo.GetReadingNookCount();
+            int expected = 1;
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }
