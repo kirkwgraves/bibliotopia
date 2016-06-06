@@ -72,7 +72,41 @@ namespace Bibliotopia_4._5._2.Tests.DAL
         [TestMethod]
         void ConnectMocksToDatastore() // Utility method
         {
+            // Tells fake DbSet to use datasource as something queryable
+            mock_readingNooks_table.As<IQueryable<ReadingNook>>().Setup(m => m.GetEnumerator()).Returns(readingNook_data.GetEnumerator());
+            mock_readingNooks_table.As<IQueryable<ReadingNook>>().Setup(m => m.ElementType).Returns(readingNook_data.ElementType);
+            mock_readingNooks_table.As<IQueryable<ReadingNook>>().Setup(m => m.Expression).Returns(readingNook_data.Expression);
+            mock_readingNooks_table.As<IQueryable<ReadingNook>>().Setup(m => m.Provider).Returns(readingNook_data.Provider);
 
+            // Tells mocked BibliotopiaContext to use fully mocked datasource (List<ReadingNook>)
+            mock_context.Setup(m => m.ReadingNooks).Returns(mock_readingNooks_table.Object);
+
+            // Tells fake DbSet to use datasource as something queryable
+            mock_favoriteBooks_table.As<IQueryable<FavoriteBook>>().Setup(m => m.GetEnumerator()).Returns(favoriteBook_data.GetEnumerator());
+            mock_favoriteBooks_table.As<IQueryable<FavoriteBook>>().Setup(m => m.ElementType).Returns(favoriteBook_data.ElementType);
+            mock_favoriteBooks_table.As<IQueryable<FavoriteBook>>().Setup(m => m.Expression).Returns(favoriteBook_data.Expression);
+            mock_favoriteBooks_table.As<IQueryable<FavoriteBook>>().Setup(m => m.Provider).Returns(favoriteBook_data.Provider);
+
+            // Tells mocked BibliotopiaContext to use fully mocked datasource (List<FavoriteBook>)
+            mock_context.Setup(m => m.FavoriteBooks).Returns(mock_favoriteBooks_table.Object);
+
+            // Tells fake DbSet to use datasource as something queryable
+            mock_booksToRead_table.As<IQueryable<BookToRead>>().Setup(m => m.GetEnumerator()).Returns(bookToRead_data.GetEnumerator());
+            mock_booksToRead_table.As<IQueryable<BookToRead>>().Setup(m => m.ElementType).Returns(bookToRead_data.ElementType);
+            mock_booksToRead_table.As<IQueryable<BookToRead>>().Setup(m => m.Expression).Returns(bookToRead_data.Expression);
+            mock_booksToRead_table.As<IQueryable<BookToRead>>().Setup(m => m.Provider).Returns(bookToRead_data.Provider);
+
+            // Tells mocked BibliotopiaContext to use fully mocked datasource (List<BookToRead>)
+            mock_context.Setup(m => m.BooksToRead).Returns(mock_booksToRead_table.Object);
+
+            // Tells fake DbSet to use datasource as something queryable
+            mock_books_table.As<IQueryable<Book>>().Setup(m => m.GetEnumerator()).Returns(book_data.GetEnumerator());
+            mock_books_table.As<IQueryable<Book>>().Setup(m => m.ElementType).Returns(book_data.ElementType);
+            mock_books_table.As<IQueryable<Book>>().Setup(m => m.Expression).Returns(book_data.Expression);
+            mock_books_table.As<IQueryable<Book>>().Setup(m => m.Provider).Returns(book_data.Provider);
+
+            // Tells mocked BibliotopiaContext to use fully mocked datasource (List<Book>)
+            mock_context.Setup(m => m.Books).Returns(mock_books_table.Object); 
         }
     }
 }
