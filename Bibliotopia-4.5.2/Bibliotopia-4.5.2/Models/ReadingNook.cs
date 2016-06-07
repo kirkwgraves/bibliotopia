@@ -14,8 +14,7 @@ namespace Bibliotopia_4._5._2.Models
         public virtual int ReadingNookId { get; set; }
         public virtual ApplicationUser Owner { get; set; }
         public virtual FavoriteBook FavoriteBook { get; set; }
-        public virtual BookToRead BookToRead { get; set; }
+        public virtual ToReadBook ToReadBook { get; set; }
 
-        // Reseach composite key vs. surrogate key
     }
 }

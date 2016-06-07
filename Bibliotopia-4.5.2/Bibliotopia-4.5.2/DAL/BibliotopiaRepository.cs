@@ -35,22 +35,40 @@ namespace Bibliotopia_4._5._2.DAL
             // GetUserById
 
 
-        public int GetFavoriteBookCountForUser(ApplicationUser user)
+        public int GetFavoriteBookCountForNook(ReadingNook nook)
         {
             IQueryable<FavoriteBook> favorites_query =
                 from faves in context.FavoriteBooks
-                where faves.Owner.Id == user.Id
+                where faves.ReadingNookId == nook.ReadingNookId
                 select faves;
             return favorites_query.ToList().Count();
         }
 
-        public int GetBookToReadCountForUser(ApplicationUser user)
+        public List<FavoriteBook> GetFavoriteBookCollectionForNook(ReadingNook nook)
         {
-            IQueryable<BookToRead> books_to_read_query =
-                from books in context.BooksToRead
-                where books.Owner.Id == user.Id
+            IQueryable<FavoriteBook> favorites_query =
+                from faves in context.FavoriteBooks
+                where faves.ReadingNookId == nook.ReadingNookId
+                select faves;
+            return favorites_query.ToList();
+        }
+
+        public int GetBookToReadCountForNook(ReadingNook nook)
+        {
+            IQueryable<ToReadBook> books_to_read_query =
+                from books in context.ToReadBooks
+                where books.ReadingNookId == nook.ReadingNookId
                 select books;
             return books_to_read_query.ToList().Count();
+        }
+
+        public List<ToReadBook> GetBookToReadCollectionForNook(ReadingNook nook)
+        {
+            IQueryable<ToReadBook> books_to_read_query =
+                from books in context.ToReadBooks
+                where books.ReadingNookId == nook.ReadingNookId
+                select books;
+            return books_to_read_query.ToList();
         }
 
         public List<ReadingNook> GetReadingNooks()

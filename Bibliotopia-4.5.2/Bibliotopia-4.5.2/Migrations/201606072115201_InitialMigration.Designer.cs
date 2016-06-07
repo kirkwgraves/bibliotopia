@@ -7,13 +7,13 @@ namespace Bibliotopia_4._5._2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606040208269_InitialCreate"; }
+            get { return "201606072115201_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

@@ -7,10 +7,12 @@ using System.Web;
 
 namespace Bibliotopia_4._5._2.Models
 {
-    public class BookToRead
+    public class ToReadBook
     {
-        public virtual int BookToReadId { get; set; }
-        public virtual ApplicationUser Owner { get; set; }
+        public virtual int ToReadBookId { get; set; }
         public virtual Book Book { get; set; }
+
+        // Foreign Key
+        public virtual int ReadingNookId { get; set; }
     }
 }

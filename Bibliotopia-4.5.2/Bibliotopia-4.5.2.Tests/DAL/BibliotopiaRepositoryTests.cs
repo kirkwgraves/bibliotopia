@@ -27,10 +27,10 @@ namespace Bibliotopia_4._5._2.Tests.DAL
         Mock<DbSet<FavoriteBook>> mock_favoriteBooks_table { get; set; }
         IQueryable<FavoriteBook> favoriteBook_data { get; set; }
 
-        // BooksToRead
-        List<BookToRead> booksToRead_datasource { get; set; }
-        Mock<DbSet<BookToRead>> mock_booksToRead_table { get; set; }
-        IQueryable<BookToRead> bookToRead_data { get; set; }
+        // ToReadBooks
+        List<ToReadBook> booksToRead_datasource { get; set; }
+        Mock<DbSet<ToReadBook>> mock_booksToRead_table { get; set; }
+        IQueryable<ToReadBook> bookToRead_data { get; set; }
 
         // Books
         List<Book> books_datasource { get; set; }
@@ -44,12 +44,12 @@ namespace Bibliotopia_4._5._2.Tests.DAL
 
             readingNooks_datasource = new List<ReadingNook>();
             favoriteBooks_datasource = new List<FavoriteBook>();
-            booksToRead_datasource = new List<BookToRead>();
+            booksToRead_datasource = new List<ToReadBook>();
             books_datasource = new List<Book>();
 
             mock_readingNooks_table = new Mock<DbSet<ReadingNook>>();
             mock_favoriteBooks_table = new Mock<DbSet<FavoriteBook>>();
-            mock_booksToRead_table = new Mock<DbSet<BookToRead>>();
+            mock_booksToRead_table = new Mock<DbSet<ToReadBook>>();
             mock_books_table = new Mock<DbSet<Book>>();
 
             repo = new BibliotopiaRepository(mock_context.Object);
@@ -91,13 +91,13 @@ namespace Bibliotopia_4._5._2.Tests.DAL
             mock_context.Setup(m => m.FavoriteBooks).Returns(mock_favoriteBooks_table.Object);
 
             // Tells fake DbSet to use datasource as something queryable
-            mock_booksToRead_table.As<IQueryable<BookToRead>>().Setup(m => m.GetEnumerator()).Returns(bookToRead_data.GetEnumerator());
-            mock_booksToRead_table.As<IQueryable<BookToRead>>().Setup(m => m.ElementType).Returns(bookToRead_data.ElementType);
-            mock_booksToRead_table.As<IQueryable<BookToRead>>().Setup(m => m.Expression).Returns(bookToRead_data.Expression);
-            mock_booksToRead_table.As<IQueryable<BookToRead>>().Setup(m => m.Provider).Returns(bookToRead_data.Provider);
+            mock_booksToRead_table.As<IQueryable<ToReadBook>>().Setup(m => m.GetEnumerator()).Returns(bookToRead_data.GetEnumerator());
+            mock_booksToRead_table.As<IQueryable<ToReadBook>>().Setup(m => m.ElementType).Returns(bookToRead_data.ElementType);
+            mock_booksToRead_table.As<IQueryable<ToReadBook>>().Setup(m => m.Expression).Returns(bookToRead_data.Expression);
+            mock_booksToRead_table.As<IQueryable<ToReadBook>>().Setup(m => m.Provider).Returns(bookToRead_data.Provider);
 
             // Tells mocked BibliotopiaContext to use fully mocked datasource (List<BookToRead>)
-            mock_context.Setup(m => m.BooksToRead).Returns(mock_booksToRead_table.Object);
+            mock_context.Setup(m => m.ToReadBooks).Returns(mock_booksToRead_table.Object);
 
             // Tells fake DbSet to use datasource as something queryable
             mock_books_table.As<IQueryable<Book>>().Setup(m => m.GetEnumerator()).Returns(book_data.GetEnumerator());
@@ -111,7 +111,7 @@ namespace Bibliotopia_4._5._2.Tests.DAL
             // Hijack the call to the Add method for each type and put in the list using the List type's Add method
             mock_readingNooks_table.Setup(m => m.Add(It.IsAny<ReadingNook>())).Callback((ReadingNook readingNook) => readingNooks_datasource.Add(readingNook));
             mock_favoriteBooks_table.Setup(m => m.Add(It.IsAny<FavoriteBook>())).Callback((FavoriteBook favoriteBook) => favoriteBooks_datasource.Add(favoriteBook));
-            mock_booksToRead_table.Setup(m => m.Add(It.IsAny<BookToRead>())).Callback((BookToRead bookToRead) => booksToRead_datasource.Add(bookToRead));
+            mock_booksToRead_table.Setup(m => m.Add(It.IsAny<ToReadBook>())).Callback((ToReadBook bookToRead) => booksToRead_datasource.Add(bookToRead));
             mock_books_table.Setup(m => m.Add(It.IsAny<Book>())).Callback((Book book) => books_datasource.Add(book));
         }
 
@@ -167,7 +167,7 @@ namespace Bibliotopia_4._5._2.Tests.DAL
             var reading_nook = new ReadingNook
             {
                 FavoriteBook = new FavoriteBook { FavoriteBookId = 1, Book = new Book { Title = "The Sound and the Fury", Author = "William Faulkner", ISBN = 9999999, Synopsis = "Southern gothic tale of decay", Reaction = "Great book", ViewerId = 87654321, BookId = 2 } },
-                BookToRead = new BookToRead { BookToReadId = 1, Book = new Book { Title = "To Kill a Mockingbird", Author = "Harper Lee", ISBN = 1234567, Synopsis = "Story of justice in small town", Reaction = "Loved it", ViewerId = 12345678, BookId = 1 } }
+                ToReadBook = new ToReadBook { ToReadBookId = 1, Book = new Book { Title = "To Kill a Mockingbird", Author = "Harper Lee", ISBN = 1234567, Synopsis = "Story of justice in small town", Reaction = "Loved it", ViewerId = 12345678, BookId = 1 } }
             };
             repo.AddReadingNook(reading_nook);
 
@@ -176,6 +176,12 @@ namespace Bibliotopia_4._5._2.Tests.DAL
 
             // Assert
             Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void MyTestMethod()
+        {
 
         }
     }

@@ -12,6 +12,6 @@ namespace Bibliotopia_4._5._2.DAL
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<ReadingNook> ReadingNooks { get; set; }
         public virtual DbSet<FavoriteBook> FavoriteBooks { get; set; }
-        public virtual DbSet<BookToRead> BooksToRead { get; set; }
+        public virtual DbSet<ToReadBook> ToReadBooks { get; set; }
     }
 }
