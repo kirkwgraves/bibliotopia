@@ -53,7 +53,7 @@ namespace Bibliotopia_4._5._2.DAL
             return favorites_query.ToList();
         }
 
-        public int GetBookToReadCountForNook(ReadingNook nook)
+        public int GetToReadBookCountForNook(ReadingNook nook)
         {
             IQueryable<ToReadBook> books_to_read_query =
                 from books in context.ToReadBooks
@@ -62,7 +62,7 @@ namespace Bibliotopia_4._5._2.DAL
             return books_to_read_query.ToList().Count();
         }
 
-        public List<ToReadBook> GetBookToReadCollectionForNook(ReadingNook nook)
+        public List<ToReadBook> GetToReadBookCollectionForNook(ReadingNook nook)
         {
             IQueryable<ToReadBook> books_to_read_query =
                 from books in context.ToReadBooks
@@ -85,6 +85,20 @@ namespace Bibliotopia_4._5._2.DAL
         public int GetReadingNookCount()
         {
             return context.ReadingNooks.Count();
+        }
+
+        public void AddBookToFavorites(Book fave_book, ReadingNook nook)
+        {
+            var new_favorite = new FavoriteBook { Book = fave_book, ReadingNookId = nook.ReadingNookId };
+            context.FavoriteBooks.Add(new_favorite);
+            context.SaveChanges();
+        }
+
+        public void AddBookToReadBookList(Book to_read_book, ReadingNook reading_nook)
+        {
+            var new_to_read_book = new ToReadBook { Book = to_read_book, ReadingNookId = reading_nook.ReadingNookId };
+            context.ToReadBooks.Add(new_to_read_book);
+            context.SaveChanges();
         }
     }
 }

@@ -180,9 +180,119 @@ namespace Bibliotopia_4._5._2.Tests.DAL
         }
 
         [TestMethod]
-        public void MyTestMethod()
+        public void RepoEnsureICanAddBooktoFavorites()
         {
+            // Arrange
+            ConnectMocksToDatastore();
+
+
+            // Act
+            var reading_nook = new ReadingNook();
+            var fave_book = new Book { Title = "The Sound and the Fury", Author = "William Faulkner", ISBN = 9999999, Synopsis = "Southern gothic tale of decay", Reaction = "Great book", ViewerId = 87654321, BookId = 2 };
+            repo.AddBookToFavorites(fave_book, reading_nook);
+
+            int actual = repo.GetFavoriteBookCountForNook(reading_nook);
+            int expected = 1;
+
+            // Assert
+            Assert.AreEqual(expected, actual);
 
         }
+
+        [TestMethod]
+        public void RepoEnsureICanAddBookToReadBookList()
+        {
+            // Arrange
+            ConnectMocksToDatastore();
+
+            // Act
+            var reading_nook = new ReadingNook();
+            var to_read_book = new Book { Title = "To Read Book Test Book", Author = "Unit Test", ISBN = 7777777, Synopsis = "Test book synopsis", Reaction = "Test book reaction", ViewerId = 66666666, BookId = 76 };
+            var to_read_book2 = new Book { Title = "To Read Book Test Book", Author = "Unit Test", ISBN = 7777777, Synopsis = "Test book synopsis", Reaction = "Test book reaction", ViewerId = 66667777, BookId = 9 };
+
+            repo.AddBookToReadBookList(to_read_book, reading_nook);
+            repo.AddBookToReadBookList(to_read_book2, reading_nook);
+
+            int actual = repo.GetToReadBookCountForNook(reading_nook);
+            int expected = 2;
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void RepoEnsureICanGetFavoriteBooksForNook()
+        {
+            // Arrange
+            ConnectMocksToDatastore();
+
+            // Act
+            var reading_nook = new ReadingNook();
+
+            var fave_book1 = new Book { Title = "FavoriteBook Test", Author = "Test Author", ISBN = 7777777, Synopsis = "Test book synopsis", Reaction = "Test book reaction", ViewerId = 66666666, BookId = 335 };
+            var fave_book2 = new Book { Title = "FavoriteBook Test 2", Author = "Test Author2", ISBN = 7777779, Synopsis = "Test book synopsis 2", Reaction = "Test book reaction 2", ViewerId = 66667777, BookId = 875 };
+            repo.AddBookToFavorites(fave_book1, reading_nook);
+            repo.AddBookToFavorites(fave_book2, reading_nook);
+
+            var actual = repo.GetFavoriteBookCollectionForNook(reading_nook);
+            //var expected = new List<FavoriteBook> { 
+            //    new FavoriteBook
+            //    {
+            //        FavoriteBookId = 0,
+            //        Book = fave_book1,
+            //        ReadingNookId = reading_nook.ReadingNookId
+            //    },
+            //    new FavoriteBook
+            //    {
+            //        FavoriteBookId = 1,
+            //        Book = fave_book2,
+            //        ReadingNookId = reading_nook.ReadingNookId
+            //    }
+
+            Assert.IsInstanceOfType(actual, typeof(List<FavoriteBook>));
+
+        }
+
+        [TestMethod]
+        public void RepoEnsureICanGetToReadBookListForNook()
+        {
+            // Arrange
+            ConnectMocksToDatastore();
+
+
+            // Act
+            var nook = new ReadingNook();
+            var to_read_book1 = new Book { Title = "FavoriteBook Test", Author = "Test Author", ISBN = 7777777, Synopsis = "Test book synopsis", Reaction = "Test book reaction", ViewerId = 66666666, BookId = 335 };
+            var to_read_book2 = new Book { Title = "FavoriteBook Test 2", Author = "Test Author2", ISBN = 7777779, Synopsis = "Test book synopsis 2", Reaction = "Test book reaction 2", ViewerId = 66667777, BookId = 875 };
+
+            repo.AddBookToReadBookList(to_read_book1, nook);
+            repo.AddBookToReadBookList(to_read_book2, nook);
+
+            var actual = repo.GetToReadBookCountForNook(nook);
+            //var expected1 = new List<ToReadBook>
+            //{
+            //    new ToReadBook
+            //    {
+            //        ToReadBookId = 1,
+            //        Book = to_read_book1,
+            //        ReadingNookId = nook.ReadingNookId
+            //    }
+            //};
+            //var expected2 =  new List<ToReadBook>
+            //{ 
+            //    new ToReadBook
+            //    {
+            //        ToReadBookId = 2,
+            //        Book = to_read_book2,
+            //        ReadingNookId = nook.ReadingNookId
+            //    }
+            //};
+
+            // Assert
+            Assert.AreEqual(actual, 2);
+
+
+        }
+
     }
 }
