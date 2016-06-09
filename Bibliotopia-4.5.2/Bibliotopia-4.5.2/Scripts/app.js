@@ -10,6 +10,10 @@
       templateUrl: "NgTemplates/Home.html",
       controller: "HomeCtrl as homeCtrl"
     })
+    .when("/search", {
+      templateUrl: "NgTemplates/Search.html",
+      controller: "SearchCtrl as searchCtrl"
+    })
     .otherwise("/");
 
   });
