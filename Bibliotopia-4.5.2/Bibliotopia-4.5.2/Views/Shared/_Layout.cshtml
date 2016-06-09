@@ -15,14 +15,12 @@
     <nav class="light-blue">
       <div class="nav-wrapper">
         <a class="brand-logo">Bibliotopia</a>
-      </div>
-      <ul class="right">
-        <ul class="nav navbar-nav">
+        <ul class="right hide-on-med-and-down">
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
+          <li>@Html.Partial("_LoginPartial")</li>
         </ul>
-      </ul>
-      @Html.Partial("_LoginPartial")
+      </div>
     </nav>
   </div>
   @RenderBody()
