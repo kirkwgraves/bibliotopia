@@ -36,13 +36,13 @@ namespace Bibliotopia_4._5._2.Migrations
             context.SaveChanges();
 
             context.ReadingNooks.AddOrUpdate(
-                //new ReadingNook
-                //{
-                //    ReadingNookId = 1,
-                //    Owner = context.Users.First(u => u.UserName == "kwg@kwg.com"),
-                //    FavoriteBook = new FavoriteBook { FavoriteBookId = 1, Book = new Book { Title = "Death in Venice", Author = "Thomas Mann", ISBN = 7654321, Synopsis = "Story of modern decadence", Reaction = "Great book", ViewerId = 87654321, BookId = 2 }, ReadingNookId = 1 },
-                //    ToReadBook = new ToReadBook { ToReadBookId = 1, Book = new Book { Title = "To Kill a Mockingbird", Author = "Harper Lee", ISBN = 1234567, Synopsis = "Story of justice in small town", Reaction = "Loved it", ViewerId = 12345678, BookId = 1 }, ReadingNookId = 1 }
-                //},
+                new ReadingNook
+                {
+                    ReadingNookId = 1,
+                    Owner = context.Users.First(u => u.UserName == "kwg@kwg.com"),
+                    FavoriteBook = new FavoriteBook { FavoriteBookId = 1, Book = new Book { Title = "Death in Venice", Author = "Thomas Mann", ISBN = 7654321, Synopsis = "Story of modern decadence", Reaction = "Great book", ViewerId = 87654321, BookId = 2 }, ReadingNookId = 1 },
+                    ToReadBook = new ToReadBook { ToReadBookId = 1, Book = new Book { Title = "To Kill a Mockingbird", Author = "Harper Lee", ISBN = 1234567, Synopsis = "Story of justice in small town", Reaction = "Loved it", ViewerId = 12345678, BookId = 1 }, ReadingNookId = 1 }
+                },
 
                 new ReadingNook
                 {

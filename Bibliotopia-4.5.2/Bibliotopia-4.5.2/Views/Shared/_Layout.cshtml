@@ -15,14 +15,10 @@
     <nav class="light-blue">
       <div class="nav-wrapper">
         <a class="brand-logo">Bibliotopia</a>
-      </div>
-      <ul class="right">
-        <ul class="nav navbar-nav">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+        <ul class="right hide-on-med-and-down">
+          <li>@Html.Partial("_LoginPartial")</li>
         </ul>
-      </ul>
-      @Html.Partial("_LoginPartial")
+      </div>
     </nav>
   </div>
   @RenderBody()
@@ -31,4 +27,5 @@
   @Scripts.Render("~/bundles/materialize")
   @RenderSection("scripts", required: false)
 </body>
+<footer class="light-blue">&copy; 2016 - Kirk Walker Graves</footer>
 </html>
