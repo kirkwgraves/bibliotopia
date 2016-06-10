@@ -14,6 +14,10 @@
       templateUrl: "NgTemplates/Search.html",
       controller: "SearchCtrl as searchCtrl"
     })
+    .when("/nook", {
+      templateUrl: "NgTemplates/ReadingNook.html",
+      controller: "NookCtrl as nookCtrl"
+    })
     .otherwise("/");
 
   });
