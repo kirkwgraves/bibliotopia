@@ -16,14 +16,11 @@ namespace Bibliotopia_4._5._2.Controllers.API
         // GET api/<controller>
         public ReadingNook Get()
         {
+            var repo = new BibliotopiaRepository();
+            var nooks = repo.GetReadingNooks();
             var user_id = User.Identity.GetUserId();
-            var context = new BibliotopiaContext();
-            var selected_nook = context.ReadingNooks.FirstOrDefault(n => n.Owner.Id == user_id);
-            if ((selected_nook != null))
-            {
-                return selected_nook;
-            }
-            return null;
+            var selected_nook = nooks.FirstOrDefault(n => n.Owner.UserName == "me@me.com");
+            return selected_nook;
         }
 
         // GET api/<controller>/5

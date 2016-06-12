@@ -11,10 +11,10 @@ namespace Bibliotopia_4._5._2.Models
 {
     public class ReadingNook
     {
-        public virtual int ReadingNookId { get; set; }
-        public virtual ApplicationUser Owner { get; set; }
-        public virtual FavoriteBook FavoriteBook { get; set; }
-        public virtual ToReadBook ToReadBook { get; set; }
+        public int ReadingNookId { get; set; }
+        public ApplicationUser Owner { get; set; }
+        public virtual List<FavoriteBook> FavoriteBooks { get; set; }
+        public virtual List<ToReadBook> ToReadBooks { get; set; }
 
     }
 }

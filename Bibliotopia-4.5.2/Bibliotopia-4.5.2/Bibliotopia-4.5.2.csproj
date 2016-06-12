@@ -216,18 +216,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606072115201_InitialMigration.cs" />
-    <Compile Include="Migrations\201606072115201_InitialMigration.Designer.cs">
-      <DependentUpon>201606072115201_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201606120245565_InitialCreate.cs" />
+    <Compile Include="Migrations\201606120245565_InitialCreate.Designer.cs">
+      <DependentUpon>201606120245565_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\ToReadBook.cs" />
     <Compile Include="Models\FavoriteBook.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ReadingNook.cs" />
+    <Compile Include="Models\ToReadBook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1145,8 +1145,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606072115201_InitialMigration.resx">
-      <DependentUpon>201606072115201_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606120245565_InitialCreate.resx">
+      <DependentUpon>201606120245565_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

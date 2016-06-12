@@ -3,7 +3,7 @@ namespace Bibliotopia_4._5._2.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -14,10 +14,8 @@ namespace Bibliotopia_4._5._2.Migrations
                         BookId = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         Author = c.String(),
-                        Synopsis = c.String(),
-                        Reaction = c.String(),
-                        ViewerId = c.Int(nullable: false),
-                        ISBN = c.Int(nullable: false),
+                        Genre = c.String(),
+                        GoogleBookId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.BookId);
             
@@ -26,29 +24,25 @@ namespace Bibliotopia_4._5._2.Migrations
                 c => new
                     {
                         FavoriteBookId = c.Int(nullable: false, identity: true),
-                        ReadingNookId = c.Int(nullable: false),
                         Book_BookId = c.Int(),
+                        ReadingNook_ReadingNookId = c.Int(),
                     })
                 .PrimaryKey(t => t.FavoriteBookId)
                 .ForeignKey("dbo.Books", t => t.Book_BookId)
-                .Index(t => t.Book_BookId);
+                .ForeignKey("dbo.ReadingNooks", t => t.ReadingNook_ReadingNookId)
+                .Index(t => t.Book_BookId)
+                .Index(t => t.ReadingNook_ReadingNookId);
             
             CreateTable(
                 "dbo.ReadingNooks",
                 c => new
                     {
                         ReadingNookId = c.Int(nullable: false, identity: true),
-                        FavoriteBook_FavoriteBookId = c.Int(),
                         Owner_Id = c.String(maxLength: 128),
-                        ToReadBook_ToReadBookId = c.Int(),
                     })
                 .PrimaryKey(t => t.ReadingNookId)
-                .ForeignKey("dbo.FavoriteBooks", t => t.FavoriteBook_FavoriteBookId)
                 .ForeignKey("dbo.AspNetUsers", t => t.Owner_Id)
-                .ForeignKey("dbo.ToReadBooks", t => t.ToReadBook_ToReadBookId)
-                .Index(t => t.FavoriteBook_FavoriteBookId)
-                .Index(t => t.Owner_Id)
-                .Index(t => t.ToReadBook_ToReadBookId);
+                .Index(t => t.Owner_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -113,12 +107,14 @@ namespace Bibliotopia_4._5._2.Migrations
                 c => new
                     {
                         ToReadBookId = c.Int(nullable: false, identity: true),
-                        ReadingNookId = c.Int(nullable: false),
                         Book_BookId = c.Int(),
+                        ReadingNook_ReadingNookId = c.Int(),
                     })
                 .PrimaryKey(t => t.ToReadBookId)
                 .ForeignKey("dbo.Books", t => t.Book_BookId)
-                .Index(t => t.Book_BookId);
+                .ForeignKey("dbo.ReadingNooks", t => t.ReadingNook_ReadingNookId)
+                .Index(t => t.Book_BookId)
+                .Index(t => t.ReadingNook_ReadingNookId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -135,24 +131,24 @@ namespace Bibliotopia_4._5._2.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.ReadingNooks", "ToReadBook_ToReadBookId", "dbo.ToReadBooks");
+            DropForeignKey("dbo.ToReadBooks", "ReadingNook_ReadingNookId", "dbo.ReadingNooks");
             DropForeignKey("dbo.ToReadBooks", "Book_BookId", "dbo.Books");
             DropForeignKey("dbo.ReadingNooks", "Owner_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.ReadingNooks", "FavoriteBook_FavoriteBookId", "dbo.FavoriteBooks");
+            DropForeignKey("dbo.FavoriteBooks", "ReadingNook_ReadingNookId", "dbo.ReadingNooks");
             DropForeignKey("dbo.FavoriteBooks", "Book_BookId", "dbo.Books");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.ToReadBooks", new[] { "ReadingNook_ReadingNookId" });
             DropIndex("dbo.ToReadBooks", new[] { "Book_BookId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.ReadingNooks", new[] { "ToReadBook_ToReadBookId" });
             DropIndex("dbo.ReadingNooks", new[] { "Owner_Id" });
-            DropIndex("dbo.ReadingNooks", new[] { "FavoriteBook_FavoriteBookId" });
+            DropIndex("dbo.FavoriteBooks", new[] { "ReadingNook_ReadingNookId" });
             DropIndex("dbo.FavoriteBooks", new[] { "Book_BookId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.ToReadBooks");
