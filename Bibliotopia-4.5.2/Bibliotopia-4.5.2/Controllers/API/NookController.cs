@@ -13,14 +13,14 @@ namespace Bibliotopia_4._5._2.Controllers.API
 {
     public class NookController : ApiController
     {
+
+        private BibliotopiaRepository repo = new BibliotopiaRepository();
+        
         // GET api/<controller>
         public ReadingNook Get()
         {
-            var repo = new BibliotopiaRepository();
-            var nooks = repo.GetReadingNooks();
             var user_id = User.Identity.GetUserId();
-            var selected_nook = nooks.FirstOrDefault(n => n.Owner.UserName == "me@me.com");
-            return selected_nook;
+            return repo.GetNookForGivenUser(user_id);
         }
 
         // GET api/<controller>/5

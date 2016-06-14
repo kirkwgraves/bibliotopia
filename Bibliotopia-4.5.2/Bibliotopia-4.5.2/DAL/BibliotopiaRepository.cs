@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using System.Security.Principal;
 
 namespace Bibliotopia_4._5._2.DAL
 {
@@ -26,36 +25,66 @@ namespace Bibliotopia_4._5._2.DAL
         {
             context = _context;
         }
-         
-        public int GetFavoriteBookCountForNook(ReadingNook nook)
+
+        public ApplicationUser GetUser(string user_id)
         {
-            
-            return nook.FavoriteBooks.ToList().Count();
+            return context.Users.FirstOrDefault(i => i.Id == user_id);
         }
 
-        public List<FavoriteBook> GetFavoriteBookCollectionForNook(ReadingNook nook)
+        public int GetFavoriteBookCountForNook(string user_id)
         {
-            return nook.FavoriteBooks.ToList();
+            var nooks = context.ReadingNooks;
+            var selected_nook = nooks.FirstOrDefault(n => n.Owner.Id == user_id);
+            return selected_nook.FavoriteBooks.Count;
+        }
+        
+        public ReadingNook GetNookForGivenUser(string user_id)
+        {
+            var nooks = context.ReadingNooks;
+            var selected_nook = nooks.FirstOrDefault(n => n.Owner.Id == user_id);
+            return selected_nook;
         }
 
-        public int GetToReadBookCountForNook(ReadingNook nook)
+        public List<FavoriteBook> GetFavoriteBookCollectionForNook(string user_id)
         {
-            return nook.ToReadBooks.Count();
+            var nooks = context.ReadingNooks;
+            var selected_nook = nooks.FirstOrDefault(n => n.Owner.Id == user_id);
+            return selected_nook.FavoriteBooks.ToList();
         }
 
-        public List<ToReadBook> GetToReadBookCollectionForNook(ReadingNook nook)
+        public int GetToReadBookCountForNook(string user_id)
         {
-            return nook.ToReadBooks.ToList();
+            var nooks = context.ReadingNooks;
+            var selected_nook = nooks.FirstOrDefault(n => n.Owner.Id == user_id);
+            return selected_nook.ToReadBooks.Count();
         }
 
-        public List<ReadingNook> GetReadingNooks()
+        public List<ToReadBook> GetToReadBookCollectionForNook(string user_id)
+        {
+            var nooks = context.ReadingNooks;
+            var selected_nook = nooks.FirstOrDefault(n => n.Owner.Id == user_id);
+            return selected_nook.ToReadBooks.ToList();
+        }
+
+        public List<ReadingNook> GetAllReadingNooks()
         {
             return context.ReadingNooks.ToList();
         }
 
-        public void AddReadingNook(ReadingNook new_nook)
+        public void CreateReadingNook(string user_id)
         {
-            context.ReadingNooks.Add(new_nook);
+            var nooks = context.ReadingNooks;
+            var owner = this.GetUser(user_id);
+            if (nooks.FirstOrDefault(n => n.Owner.Id == user_id) != null)
+            {
+                throw new Exception("Reading Nook already exists for this user!");
+            }
+            context.ReadingNooks.Add(
+                new ReadingNook
+                {
+                    Owner = owner
+                }
+            );
             context.SaveChanges();
         }
 
