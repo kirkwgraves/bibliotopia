@@ -4,7 +4,7 @@
     var vm = this;
     vm.nook = null;
     vm.checkForUserNook = function () {
-      $http.get("/api/Nook")
+      $http.get("/api/Nook/")
         .success(function (response) {
             console.log(response);
           //if (response.data !== null) {

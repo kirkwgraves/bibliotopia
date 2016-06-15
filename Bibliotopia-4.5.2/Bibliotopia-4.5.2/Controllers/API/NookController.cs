@@ -17,10 +17,11 @@ namespace Bibliotopia_4._5._2.Controllers.API
         private BibliotopiaRepository repo = new BibliotopiaRepository();
         
         // GET api/<controller>
-        public ReadingNook Get()
+        public ReadingNook GetUserNook()
         {
             var user_id = User.Identity.GetUserId();
-            return repo.GetNookForGivenUser(user_id);
+            var nook = repo.GetNookForGivenUser(user_id);
+            return nook;
         }
 
         // GET api/<controller>/5
