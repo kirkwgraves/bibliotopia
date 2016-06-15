@@ -5,17 +5,18 @@
 
 <div class="row">
   <div id="search-output" class="col s4 offset-s4">
-    <div class="card light-blue" ng-repeat="book in searchCtrl.bookTitleList">
+    <div class="card light-blue" id="search-card" ng-repeat="book in searchCtrl.bookTitleList">
       <div class="card-image">
         <img id="book-img" ng-src="{{ book.volumeInfo.imageLinks.thumbnail }}">
       </div>
       <div class="card-content white-text">
         <h4>{{ book.volumeInfo.title }}</h4>
-        <h5>{{ book.volumeInfo.subtitle }}</h5>
-        <h5>{{ book.volumeInfo.authors[0] }}</h5>
+        <h5><em>{{ book.volumeInfo.subtitle }}</em></h5>
+        <h5><strong>{{ book.volumeInfo.authors[0] }}</strong></h5>
       </div>
       <div class="card-action">
         <a class="white-text" href="#">View Detail</a>
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
       </div>
     </div>
   </div>

@@ -17,11 +17,19 @@
   display: inline;
 }
 
+#search-card {
+  width: 125%;
+}
+
 #book-img {
   padding-left: 40px;
   padding-top: 20px;
   width:200px; 
   height:250px
+}
+
+.btn-floating {
+  margin-left: 270px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
