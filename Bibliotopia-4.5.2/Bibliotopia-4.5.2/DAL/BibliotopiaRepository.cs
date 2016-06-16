@@ -95,8 +95,9 @@ namespace Bibliotopia_4._5._2.DAL
             return context.ReadingNooks.Count();
         }
 
-        public void AddBookToFavorites(Book fave_book, ReadingNook nook)
+        public void AddBookToFavorites(string user_id, Book fave_book)
         {
+            var nook = this.GetNookForGivenUser(user_id);
             nook.FavoriteBooks.Add(new FavoriteBook { Book = fave_book, ReadingNook = nook });
             context.SaveChanges();
         }
