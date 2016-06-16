@@ -39,6 +39,13 @@
       });
     };
 
+    vm.clear = function () {
+      vm.searchTitleText = null;
+      vm.searchAuthorText = null;
+      vm.searchSubjectText = null;
+      $('.search-card').html("");
+    };
+
 
   });
 })();

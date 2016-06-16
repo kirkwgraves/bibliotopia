@@ -33,6 +33,8 @@ namespace Bibliotopia_4._5._2.Controllers.API
         // POST api/<controller>
         public void Post([FromBody]string value)
         {
+            string user_id = User.Identity.GetUserId();
+            ReadingNook new_nook = repo.CreateReadingNook(user_id);
         }
 
         // PUT api/<controller>/5

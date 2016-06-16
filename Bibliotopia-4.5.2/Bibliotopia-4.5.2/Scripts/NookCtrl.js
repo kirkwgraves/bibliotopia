@@ -6,7 +6,7 @@
     vm.checkForUserNook = function () {
       $http.get("/api/Nook/")
         .success(function (response) {
-            console.log(response);
+          console.log(response);
           //if (response.data !== null) {
           //  vm.nook = response.data;
           //  console.log(vm.nook);
@@ -15,7 +15,14 @@
           //  vm.nook = null;
           //}
         });
-    }
+    };
+
+    vm.createNook = function () {
+      $http.post("/api/Nook")
+        .success(function (response) {
+          console.log(response);
+        });
+    };
   });
 
 })();

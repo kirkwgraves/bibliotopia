@@ -71,7 +71,7 @@ namespace Bibliotopia_4._5._2.DAL
             return context.ReadingNooks.ToList();
         }
 
-        public void CreateReadingNook(string user_id)
+        public ReadingNook CreateReadingNook(string user_id)
         {
             var nooks = context.ReadingNooks;
             var owner = this.GetUser(user_id);
@@ -79,13 +79,15 @@ namespace Bibliotopia_4._5._2.DAL
             {
                 throw new Exception("Reading Nook already exists for this user!");
             }
-            context.ReadingNooks.Add(
-                new ReadingNook
-                {
-                    Owner = owner
-                }
-            );
+
+            ReadingNook new_nook = new ReadingNook
+            {
+                Owner = owner
+            };
+
+            context.ReadingNooks.Add(new_nook);
             context.SaveChanges();
+            return new_nook;
         }
 
         public int GetReadingNookCount()

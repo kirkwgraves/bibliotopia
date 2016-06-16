@@ -88,3 +88,4 @@ C:\Users\NSSStudent\Documents\GitHub\Bibliotopia\Bibliotopia-4.5.2\Bibliotopia-4
 C:\Users\NSSStudent\Documents\GitHub\Bibliotopia\Bibliotopia-4.5.2\Bibliotopia-4.5.2\obj\Debug\Bibliotopia-4.5.2.pdb
 C:\Users\NSSStudent\Documents\GitHub\Bibliotopia\Bibliotopia-4.5.2\Bibliotopia-4.5.2\obj\Debug\Bibliotopia_4._5._2.Migrations.InitialCreate.resources
 C:\Users\NSSStudent\Documents\GitHub\Bibliotopia\Bibliotopia-4.5.2\Bibliotopia-4.5.2\obj\Debug\Bibliotopia-4.5.2.csproj.GenerateResource.Cache
+C:\Users\NSSStudent\Documents\GitHub\Bibliotopia\Bibliotopia-4.5.2\Bibliotopia-4.5.2\obj\Debug\Bibliotopia-4.5.2.csprojResolveAssemblyReference.cache
