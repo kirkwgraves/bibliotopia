@@ -74,7 +74,7 @@ namespace Bibliotopia_4._5._2.DAL
         public ReadingNook CreateReadingNook(string user_id)
         {
             var nooks = context.ReadingNooks;
-            var owner = this.GetUser(user_id);
+            var owner = GetUser(user_id);
             if (nooks.FirstOrDefault(n => n.Owner.Id == user_id) != null)
             {
                 throw new Exception("Reading Nook already exists for this user!");
@@ -97,14 +97,15 @@ namespace Bibliotopia_4._5._2.DAL
 
         public void AddBookToFavorites(string user_id, Book fave_book)
         {
-            var nook = this.GetNookForGivenUser(user_id);
+            var nook = GetNookForGivenUser(user_id);
             nook.FavoriteBooks.Add(new FavoriteBook { Book = fave_book, ReadingNook = nook });
             context.SaveChanges();
         }
 
-        public void AddBookToReadBookList(Book to_read_book, ReadingNook reading_nook)
+        public void AddBookToReadBookList(string user_id, Book to_read_book)
         {
-            reading_nook.ToReadBooks.Add(new ToReadBook { Book = to_read_book, ReadingNook = reading_nook });
+            var nook = GetNookForGivenUser(user_id);
+            nook.ToReadBooks.Add(new ToReadBook { Book = to_read_book, ReadingNook = nook });
             context.SaveChanges();
         }
     }

@@ -46,6 +46,11 @@
       $('.search-card').html("");
     };
 
+    vm.addToFavorites = function (book) {
+      vm.favoriteBook = book;
+      console.log(vm.favoriteBook);
+    };
+
 
   });
 })();
