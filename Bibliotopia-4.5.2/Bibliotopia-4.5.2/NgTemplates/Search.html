@@ -1,6 +1,14 @@
 ﻿<div>
-  <input type="text" ng-model="searchCtrl.searchText" />
-  <a class="green waves-effect waves-light btn" ng-click="searchCtrl.searchByTitle()" id="search-button"><i class="material-icons left">cloud</i>Search by Title</a>
+  <input type="text" ng-model="searchCtrl.searchTitleText" />
+  <a class="green waves-effect waves-light btn" ng-click="searchCtrl.searchByTitle()" id="search-button"><i class="material-icons left">cloud</i>Title</a>
+</div>
+<div>
+  <input type="text" ng-model="searchCtrl.searchAuthorText" />
+  <a class="orange waves-effect waves-light btn" ng-click="searchCtrl.searchByAuthor()" id="search-button"><i class="material-icons left">cloud</i>Author</a>
+</div>
+<div>
+  <input type="text" ng-model="searchCtrl.searchSubjectText" />
+  <a class="blue darken-4 waves-effect waves-light btn" ng-click="searchCtrl.searchBySubject()" id="search-button"><i class="material-icons left">cloud</i>Subject</a>
 </div>
 
 <div class="row">
