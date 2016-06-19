@@ -13,12 +13,24 @@
   width: 100%;
 }
 
+#search-container {
+  margin-top: 40px;
+}
+
 #search-output {
   display: inline;
 }
 
 .search-card {
   width: 125%;
+}
+
+.search-input-div {
+  padding-left: 50px;
+}
+
+#clear-button {
+ margin-left: 50px;
 }
 
 #book-img {
@@ -29,7 +41,7 @@
 }
 
 .btn-floating {
-  margin-left: 270px;
+  margin-left: 280px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
