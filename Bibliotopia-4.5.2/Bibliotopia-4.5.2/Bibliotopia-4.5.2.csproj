@@ -210,6 +210,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\FavoriteBooksController.cs" />
     <Compile Include="Controllers\API\NookController.cs" />
+    <Compile Include="Controllers\API\ToReadBooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\BibliotopiaContext.cs" />
@@ -250,6 +251,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="NgTemplates\BookDetail.html" />
     <Content Include="NgTemplates\Home.html" />
     <Content Include="NgTemplates\ReadingNook.html" />
     <Content Include="NgTemplates\Search.html" />

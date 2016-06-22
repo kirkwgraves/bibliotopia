@@ -2,6 +2,7 @@
 
   var app = angular.module("Bibliotopia", ["ngRoute"]);
 
+
   app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider
 
@@ -16,6 +17,10 @@
     })
     .when("/nook", {
       templateUrl: "NgTemplates/ReadingNook.html",
+      controller: "NookCtrl as nookCtrl"
+    })
+    .when("/nookbooks", {
+      templateUrl: "NgTemplates/UserNook.html",
       controller: "NookCtrl as nookCtrl"
     })
     .otherwise("/");

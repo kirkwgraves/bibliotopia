@@ -24,11 +24,27 @@
           <h5><strong>{{ book.volumeInfo.authors[0] }}</strong></h5>
         </div>
         <div class="card-action">
-          <a class="white-text" href="#">View Detail</a>
+          <a data-target="detail" class="waves-effect waves-light btn modal-trigger" ng-click="searchCtrl.viewBookDetail(book)">View Detail</a>
           <a class="btn-floating btn-large waves-effect waves-light red" ng-click="searchCtrl.addToFavorites(book)"><i class="material-icons">add</i></a>
           <a class="btn-floating wishlist-button btn-large waves-effect waves-light yellow" ng-click="searchCtrl.addToRead(book)"><i class="material-icons">visibility</i></a>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="detail" class="modal">
+  <div class="modal-content">
+    <h4>{{ selectedBook.volumeInfo.title }}</h4>
+    <h5><em>{{ selectedBook.volumeInfo.subtitle }}</em></h5>
+    <h5><strong>{{ selectedBook.volumeInfo.authors[0] }}</strong></h5>
+    <br />
+    <p>{{ selectedBook.volumeInfo.description }}</p>
+    <br />
+    <span>{{ selectedBook.volumeInfo.publisher }}</span>
+    <span>{{ selectedBook.volumeInfo.pageCount}} pages</span>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="btn modal-action modal-close waves-effect waves-green btn-flat">Close</a>
   </div>
 </div>

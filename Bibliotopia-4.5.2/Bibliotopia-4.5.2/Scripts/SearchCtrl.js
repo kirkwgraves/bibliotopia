@@ -2,6 +2,11 @@
 
   angular.module("Bibliotopia").controller("SearchCtrl", ['$http', function ($http) {
 
+    $(document).ready(function () {
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal-trigger').leanModal();
+    });
+
     var vm = this;
     vm.searchTitleText = null;
     vm.searchAuthorText = null;
@@ -13,6 +18,8 @@
       Genre: null,
       GoogleBookId: null
     };
+
+    vm.selectedBook = null;
 
     vm.searchByTitle = function () {
 
@@ -72,6 +79,36 @@
       //console.log(vm.favoriteBook);
     };
 
+    vm.addToRead = function (book) {
+
+      vm.bookToRead = {
+        Title: book.volumeInfo.title,
+        Author: book.volumeInfo.authors[0],
+        Genre: book.volumeInfo.categories[0],
+        GoogleBookId: book.id
+      };
+
+      $http.post('/api/ToReadBooks/', this.bookToRead)
+      .success(function (response) {
+        console.log('Success!', response);
+      })
+      .error(function (response) {
+        console.log('error:', response);
+      });
+    };
+
+    vm.viewBookDetail = function (book) {
+      //vm.selectedBook = book;
+      //console.log(vm.selectedBook);
+      $('#detail').openModal({
+        controller: 'SearchCtrl as searchCtrl',
+        resolve: {
+          book: function () {
+            return vm.selectedBook;
+          }
+        }
+      });
+    };
 
   }]);
 })();

@@ -17,6 +17,8 @@
         });
     };
 
+
+
     vm.createNook = function () {
       $http.post("/api/Nook")
         .success(function (response) {
