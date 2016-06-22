@@ -1,6 +1,6 @@
 ﻿(function () {
 
-  angular.module("Bibliotopia").controller("NookCtrl", function ($http, $location) {
+  angular.module("Bibliotopia").controller("NookCtrl", ["$http","$location", function ($http, $location) {
     var vm = this;
     vm.nook = null;
     vm.checkForUserNook = function () {
@@ -23,6 +23,6 @@
           console.log(response);
         });
     };
-  });
+  }]);
 
 })();

@@ -2,7 +2,7 @@
 
   var app = angular.module("Bibliotopia", ["ngRoute"]);
 
-  app.config(function ($routeProvider) {
+  app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider
 
     // route for the home page
@@ -20,5 +20,5 @@
     })
     .otherwise("/");
 
-  });
+  }]);
 })();

@@ -1,12 +1,18 @@
 ﻿(function () {
 
-  angular.module("Bibliotopia").controller("SearchCtrl", function ($http) {
+  angular.module("Bibliotopia").controller("SearchCtrl", ['$http', function ($http) {
 
     var vm = this;
     vm.searchTitleText = null;
     vm.searchAuthorText = null;
     vm.searchSubjectText = null;
     vm.bookTitleList = null;
+    vm.favoriteBook = {
+      Title: null,
+      Author: null,
+      Genre: null,
+      GoogleBookId: null
+    };
 
     vm.searchByTitle = function () {
 
@@ -47,11 +53,26 @@
     };
 
     vm.addToFavorites = function (book) {
-      vm.favoriteBook = book;
-      console.log(vm.favoriteBook);
+
+      vm.favoriteBook = {
+        Title: book.volumeInfo.title,
+        Author: book.volumeInfo.authors[0],
+        Genre: book.volumeInfo.categories[0],
+        GoogleBookId: book.id
+      };
+
+
+      $http.post('/api/FavoriteBooks/', this.favoriteBook)
+      .success(function (response) {
+        console.log('Success!', response);
+      })
+      .error(function (response) {
+        console.log('error:', response);
+      });
+      //console.log(vm.favoriteBook);
     };
 
 
-  });
+  }]);
 })();
   

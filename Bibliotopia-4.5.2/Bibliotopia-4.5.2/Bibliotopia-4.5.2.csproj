@@ -234,6 +234,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\aspnet-Bibliotopia-4.5.2-20160601074620.mdf" />
+    <Content Include="Content\images\Book.jpg" />
+    <Content Include="Content\images\creative-bookshelves-11-21.jpg" />
+    <Content Include="Content\images\google-books.png" />
+    <Content Include="Content\images\googlebooksapi.PNG" />
+    <Content Include="Content\images\joyce-and-ulysses-covers.jpg" />
+    <Content Include="Content\images\lolita.jpg" />
+    <Content Include="Content\images\Open-Book.jpg" />
+    <Content Include="Content\images\open_book.jpg" />
     <Content Include="Content\materialize\css\materialize.css" />
     <Content Include="Content\materialize\css\materialize.min.css" />
     <Content Include="Content\materialize\font\material-design-icons\LICENSE.txt" />
@@ -337,6 +345,7 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <None Include="Properties\PublishProfiles\Bibliotopia - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\HomeCtrl.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1135,9 +1144,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

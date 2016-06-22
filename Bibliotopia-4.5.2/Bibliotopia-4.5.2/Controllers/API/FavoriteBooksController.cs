@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using Bibliotopia_4._5._2.DAL;
 using Bibliotopia_4._5._2.Models;
 using Microsoft.AspNet.Identity;
+using System.Web.Http.ModelBinding;
 
 namespace Bibliotopia_4._5._2.Controllers.API
 {
@@ -25,8 +26,25 @@ namespace Bibliotopia_4._5._2.Controllers.API
             var faves = repo.GetFavoriteBookCollectionForNook(user_id);
             return (IQueryable<FavoriteBook>)faves;
         }
+
+        // POST: api/FavoriteBooks
+        [ResponseType(typeof(Book))]
+        public IHttpActionResult PostFavoriteBook(Book favoriteBook)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user_id = User.Identity.GetUserId();
+            repo.AddBookToFavorites(user_id, favoriteBook);
+
+            return Ok();
+        }
     }
 }
+
+
 
 //        // GET: api/FavoriteBooks/5
 //        [ResponseType(typeof(FavoriteBook))]
@@ -73,21 +91,6 @@ namespace Bibliotopia_4._5._2.Controllers.API
 //            return StatusCode(HttpStatusCode.NoContent);
 //        }
 
-//        // POST: api/FavoriteBooks
-//        [ResponseType(typeof(Book))]
-//        public IHttpActionResult PostFavoriteBook(Book favoriteBook)
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return BadRequest(ModelState);
-//            }
-            
-            
-//            repo.AddBookToFavorites(favoriteBook);
-//            db.SaveChanges();
-
-//            return CreatedAtRoute("DefaultApi", new { id = favoriteBook.FavoriteBookId }, favoriteBook);
-//        }
 
 //        // DELETE: api/FavoriteBooks/5
 //        [ResponseType(typeof(FavoriteBook))]

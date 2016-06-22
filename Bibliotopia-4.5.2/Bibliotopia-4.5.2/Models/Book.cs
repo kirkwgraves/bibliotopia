@@ -11,6 +11,6 @@ namespace Bibliotopia_4._5._2.Models
         public string Title { get; set; }
         public string Author { get; set; }
         public string Genre { get; set; }
-        public int GoogleBookId { get; set; }
+        public string GoogleBookId { get; set; }
     }
 }

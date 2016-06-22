@@ -13,7 +13,7 @@ namespace Bibliotopia_4._5._2.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Bibliotopia_4._5._2.DAL.BibliotopiaContext context)
@@ -42,7 +42,7 @@ namespace Bibliotopia_4._5._2.Migrations
                 Title = "The Sound and the Fury",
                 Author = "William Faulkner",
                 Genre = "Literary Fiction",
-                GoogleBookId = 12345,
+                GoogleBookId = "12345"
 
             };
 
@@ -52,7 +52,7 @@ namespace Bibliotopia_4._5._2.Migrations
                 Title = "Heart of Darkness",
                 Author = "Joseph Conrad",
                 Genre = "Literary Fiction",
-                GoogleBookId = 67890
+                GoogleBookId = "67890"
             };
 
             Book book3 = new Book
@@ -61,7 +61,7 @@ namespace Bibliotopia_4._5._2.Migrations
                 Title = "The Moviegoer",
                 Author = "Walker Percy",
                 Genre = "Literary Fiction",
-                GoogleBookId = 99999
+                GoogleBookId = "99999"
             };
 
             Book book4 = new Book
@@ -70,7 +70,7 @@ namespace Bibliotopia_4._5._2.Migrations
                 Title = "Watchmen",
                 Author = "Alan Moore",
                 Genre = "Graphic Novel",
-                GoogleBookId = 76767
+                GoogleBookId = "76767"
             };
 
             Book book5 = new Book
@@ -79,7 +79,7 @@ namespace Bibliotopia_4._5._2.Migrations
                 Title = "Bo Knows Bo",
                 Author = "Bo Jackson",
                 Genre = "Sports Biography",
-                GoogleBookId = 34343
+                GoogleBookId = "34343"
             };
 
             Book book6 = new Book
@@ -88,7 +88,7 @@ namespace Bibliotopia_4._5._2.Migrations
                 Title = "Zero K",
                 Author = "Don DeLillo",
                 Genre = "Literary Fiction",
-                GoogleBookId = 66666
+                GoogleBookId = "66666"
             };
 
             Book book7 = new Book
@@ -97,7 +97,7 @@ namespace Bibliotopia_4._5._2.Migrations
                 Title = "Intro to JavaScript",
                 Author = "Joe Blogs",
                 Genre = "Web Development",
-                GoogleBookId = 55555
+                GoogleBookId = "55555"
             };
 
             Book book8 = new Book
@@ -106,7 +106,7 @@ namespace Bibliotopia_4._5._2.Migrations
                 Title = "Calculus",
                 Author = "Professor Jenkins",
                 Genre = "Mathematics",
-                GoogleBookId = 99999
+                GoogleBookId = "99999"
             };
 
             FavoriteBook fave_book1 = new FavoriteBook

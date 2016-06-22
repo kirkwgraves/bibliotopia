@@ -1,8 +1,8 @@
 ﻿(function () {
 
-  angular.module("Bibliotopia").controller("HomeCtrl", function () {
+  angular.module("Bibliotopia").controller("HomeCtrl", [ function () {
 
-  });
+  }]);
 
 
 })();
