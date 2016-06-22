@@ -44,6 +44,12 @@
   margin-left: 280px;
 }
 
+.wishlist-button {
+  margin-left: 391px;
+  margin-top: 8px;
+}
+
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
