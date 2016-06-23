@@ -1,14 +1,27 @@
 ﻿<div class="row">
-  <div class="col s4 offset-s4">
+  <div class="col s6 offset-s3">
+    <h1 class="nook-header">Your Favorites</h1>
     <div class="card light-blue" ng-repeat="favorite in nookCtrl.favoriteBooks">
       
       <div class="card-content white-text">
         <h4>{{ favorite.title }}</h4>
         <h5><em>{{ favorite.author }}</em></h5>
         <h5><strong>{{ favorite.genre }}</strong></h5>
-        <a class="green waves-effect waves-light btn" href="#/embed">Read Now</a>
+        <a class="green waves-effect waves-light btn" href="#/embed">Read Again</a>
       </div>
       
+    </div>
+    <br />
+    <h1 class="nook-header">Your Wish List</h1>
+    <div class="card orange" ng-repeat="toRead in nookCtrl.toReadBooks">
+
+      <div class="card-content white-text">
+        <h4>{{ toRead.title }}</h4>
+        <h5><em>{{ toRead.author }}</em></h5>
+        <h5><strong>{{ toRead.genre }}</strong></h5>
+        <a class="green waves-effect waves-light btn" href="#/embed">Read Now</a>
+      </div>
+
     </div>
   </div>
 </div>

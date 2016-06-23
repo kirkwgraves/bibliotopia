@@ -19,12 +19,17 @@
         });
     };
 
-      $http.get("/api/FavoriteBooks")
-        .success(function (response) {
-          vm.favoriteBooks = response;
-          console.log(vm.favoriteBooks)
-        });
+    $http.get("/api/FavoriteBooks")
+      .success(function (response) {
+        vm.favoriteBooks = response;
+        console.log(vm.favoriteBooks)
+      });
 
+    $http.get("/api/ToReadBooks")
+      .success(function (response) {
+        vm.toReadBooks = response;
+        console.log(vm.toReadBooks)
+      });
 
     vm.createNook = function () {
       $http.post("/api/Nook")

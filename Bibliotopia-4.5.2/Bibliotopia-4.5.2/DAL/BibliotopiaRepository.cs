@@ -65,11 +65,16 @@ namespace Bibliotopia_4._5._2.DAL
             return selected_nook.ToReadBooks.Count();
         }
 
-        public List<ToReadBook> GetToReadBookCollectionForNook(string user_id)
+        public List<Book> GetToReadBookCollectionForNook(string user_id)
         {
-            var nooks = context.ReadingNooks;
-            var selected_nook = nooks.FirstOrDefault(n => n.Owner.Id == user_id);
-            return selected_nook.ToReadBooks.ToList();
+            var user_nook = GetNookForGivenUser(user_id);
+            var to_read_books = context.ToReadBooks.Where(f => f.ReadingNook.Owner.Id == user_id);
+
+            IQueryable<Book> to_read_books_query =
+                from t in to_read_books
+                select t.Book;
+
+            return to_read_books_query.ToList();
         }
 
         public List<ReadingNook> GetAllReadingNooks()

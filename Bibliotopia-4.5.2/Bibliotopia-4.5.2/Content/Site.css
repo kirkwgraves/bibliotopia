@@ -40,6 +40,10 @@
   height:250px
 }
 
+.nook-header {
+  text-align: center;
+}
+
 .btn-floating {
   margin-left: 391px;
 }
@@ -64,9 +68,7 @@ textarea {
     max-width: 280px;
 }
 
-#splash-img {
-  width: 100%;
-}
+
 
 footer {
   position: fixed;

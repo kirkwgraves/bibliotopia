@@ -16,11 +16,11 @@ namespace Bibliotopia_4._5._2.Controllers.API
         private BibliotopiaRepository repo = new BibliotopiaRepository();
 
         // GET api/ToReadBooks
-        public IQueryable<ToReadBook> GetToReadBooks()
+        public List<Book> GetToReadBooks()
         {
             var user_id = User.Identity.GetUserId();
-            var to_read_books = repo.GetFavoriteBookCollectionForNook(user_id);
-            return (IQueryable<ToReadBook>)to_read_books;
+            var to_read_books = repo.GetToReadBookCollectionForNook(user_id);
+            return to_read_books;
         }
 
         // GET api/<controller>/5
