@@ -27,8 +27,8 @@
         </div>
         <div class="card-action">
           <a data-target="detail" class="waves-effect waves-light btn modal-trigger" ng-click="searchCtrl.viewBookDetail(book)">View Detail</a>
-          <a class="btn-floating btn-large waves-effect waves-light red" ng-click="searchCtrl.addToFavorites(book)"><i class="material-icons">add</i></a>
-          <a class="btn-floating wishlist-button btn-large waves-effect waves-light yellow" ng-click="searchCtrl.addToRead(book)"><i class="material-icons">visibility</i></a>
+          <a class="btn-floating btn-large waves-effect waves-light red" onclick="Materialize.toast('Added to Favorites', 3500)" ng-click="searchCtrl.addToFavorites(book)"><i class="material-icons">add</i></a>
+          <a class="btn-floating wishlist-button btn-large waves-effect waves-light yellow" onclick="Materialize.toast('Added to Wish List', 3500)" ng-click="searchCtrl.addToRead(book)"><i class="material-icons">visibility</i></a>
         </div>
       </div>
     </div>
