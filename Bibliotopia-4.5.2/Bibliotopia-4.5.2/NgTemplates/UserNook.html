@@ -1,10 +1,15 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
+﻿<div class="row">
+  <div class="col s4 offset-s4">
+    <div class="card light-blue" ng-repeat="favorite in nookCtrl.favoriteBooks">
+      
+      <div class="card-content white-text">
+        <h4>{{ favorite.title }}</h4>
+        <h5><em>{{ favorite.author }}</em></h5>
+        <h5><strong>{{ favorite.genre }}</strong></h5>
+        <a class="green waves-effect waves-light btn" href="#/embed">Read Now</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
-</body>
-</html>

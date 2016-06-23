@@ -20,11 +20,12 @@ namespace Bibliotopia_4._5._2.Controllers.API
         private BibliotopiaRepository repo = new BibliotopiaRepository();
 
         // GET: api/FavoriteBooks
-        public IQueryable<FavoriteBook> GetFavoriteBooks()
+        public List<Book> GetFavoriteBooks()
         {
             var user_id = User.Identity.GetUserId();
             var faves = repo.GetFavoriteBookCollectionForNook(user_id);
-            return (IQueryable<FavoriteBook>)faves;
+            return faves;
+           
         }
 
         // POST: api/FavoriteBooks

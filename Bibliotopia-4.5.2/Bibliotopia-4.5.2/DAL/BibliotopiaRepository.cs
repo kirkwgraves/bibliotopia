@@ -45,11 +45,17 @@ namespace Bibliotopia_4._5._2.DAL
             return selected_nook;
         }
 
-        public List<FavoriteBook> GetFavoriteBookCollectionForNook(string user_id)
+        public List<Book> GetFavoriteBookCollectionForNook(string user_id)
         {
-            var nooks = context.ReadingNooks;
-            var selected_nook = nooks.FirstOrDefault(n => n.Owner.Id == user_id);
-            return selected_nook.FavoriteBooks.ToList();
+            var user_nook = GetNookForGivenUser(user_id);
+            var faves = context.FavoriteBooks.Where(f => f.ReadingNook.Owner.Id == user_id);
+
+            IQueryable<Book> fave_books_query =
+                from f in faves
+                select f.Book;
+
+            return fave_books_query.ToList();
+           
         }
 
         public int GetToReadBookCountForNook(string user_id)
