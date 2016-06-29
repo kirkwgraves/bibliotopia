@@ -26,6 +26,17 @@
         console.log(vm.favoriteBooks)
       });
 
+    vm.removeFromFavorites = function (favorite) {
+      $http.delete("/api/FavoriteBooks/id", this.favorite)
+        .success(function (response) {
+          console.log("Success!", response);
+         
+        })
+        .error(function (response) {
+          console.log("Error: ", response)
+        });
+    };
+
     $http.get("/api/ToReadBooks")
       .success(function (response) {
         vm.toReadBooks = response;

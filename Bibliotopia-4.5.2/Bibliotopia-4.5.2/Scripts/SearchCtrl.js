@@ -16,6 +16,7 @@
       Title: null,
       Author: null,
       Genre: null,
+      CoverImageUrl: null,
       GoogleBookId: null
     };
 
@@ -65,6 +66,7 @@
         Title: book.volumeInfo.title,
         Author: book.volumeInfo.authors[0],
         Genre: book.volumeInfo.categories[0],
+        CoverImageUrl: book.volumeInfo.imageLinks.thumbnail,
         GoogleBookId: book.id
       };
 
@@ -85,6 +87,7 @@
         Title: book.volumeInfo.title,
         Author: book.volumeInfo.authors[0],
         Genre: book.volumeInfo.categories[0],
+        CoverImageUrl: book.volumeInfo.imageLinks.thumbnail,
         GoogleBookId: book.id
       };
 

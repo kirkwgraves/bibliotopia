@@ -4,10 +4,12 @@
     <div class="card blue darken-4" ng-repeat="favorite in nookCtrl.favoriteBooks">
       
       <div class="card-content white-text">
+        <img ng-src="{{ favorite.coverImageUrl}}" />
         <h4>{{ favorite.title }}</h4>
         <h5>{{ favorite.author }}</h5>
         <h5><strong>{{ favorite.genre }}</strong></h5>
         <a class="green waves-effect waves-light btn" href="#/preview/{{ favorite.googleBookId }}">Read Again</a>
+        <a class="btn-floating btn-large waves-effect waves-light red" onclick="Materialize.toast('Removed from Favorites', 3500)" ng-click="nookCtrl.removeFromFavorites(favorite)"><i class="material-icons">remove</i></a>
       </div>
       
     </div>
@@ -16,6 +18,7 @@
     <div class="card red darken-3" ng-repeat="toRead in nookCtrl.toReadBooks">
 
       <div class="card-content white-text">
+        <img ng-src="{{ toRead.coverImageUrl }}"/>
         <h4>{{ toRead.title }}</h4>
         <h5><em>{{ toRead.author }}</em></h5>
         <h5><strong>{{ toRead.genre }}</strong></h5>

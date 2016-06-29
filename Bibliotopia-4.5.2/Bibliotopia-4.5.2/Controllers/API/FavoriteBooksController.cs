@@ -17,6 +17,7 @@ namespace Bibliotopia_4._5._2.Controllers.API
 {
     public class FavoriteBooksController : ApiController
     {
+        private BibliotopiaContext context = new BibliotopiaContext();
         private BibliotopiaRepository repo = new BibliotopiaRepository();
 
         // GET: api/FavoriteBooks
@@ -39,6 +40,16 @@ namespace Bibliotopia_4._5._2.Controllers.API
 
             var user_id = User.Identity.GetUserId();
             repo.AddBookToFavorites(user_id, favoriteBook);
+
+            return Ok();
+        }
+
+        // DELETE: api/FavoriteBooks/id
+        [ResponseType(typeof(FavoriteBook))]
+        public IHttpActionResult DeleteFavoriteBook(Book favoriteBook)
+        {
+            var user_id = User.Identity.GetUserId();
+            repo.RemoveBookFromFavorites(user_id, favoriteBook);
 
             return Ok();
         }
@@ -93,21 +104,6 @@ namespace Bibliotopia_4._5._2.Controllers.API
 //        }
 
 
-//        // DELETE: api/FavoriteBooks/5
-//        [ResponseType(typeof(FavoriteBook))]
-//        public IHttpActionResult DeleteFavoriteBook(int id)
-//        {
-//            FavoriteBook favoriteBook = db.FavoriteBooks.Find(id);
-//            if (favoriteBook == null)
-//            {
-//                return NotFound();
-//            }
-
-//            db.FavoriteBooks.Remove(favoriteBook);
-//            db.SaveChanges();
-
-//            return Ok(favoriteBook);
-//        }
 
 //        protected override void Dispose(bool disposing)
 //        {

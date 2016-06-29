@@ -68,13 +68,20 @@ namespace Bibliotopia_4._5._2.DAL
         public List<Book> GetToReadBookCollectionForNook(string user_id)
         {
             var user_nook = GetNookForGivenUser(user_id);
-            var to_read_books = context.ToReadBooks.Where(f => f.ReadingNook.Owner.Id == user_id);
+            var to_read_books = context.ToReadBooks.Where(t => t.ReadingNook.Owner.Id == user_id);
 
             IQueryable<Book> to_read_books_query =
                 from t in to_read_books
                 select t.Book;
 
             return to_read_books_query.ToList();
+        }
+
+        public Book GetToReadBook(string user_id, Book book)
+        {
+            List<Book> to_reads = GetToReadBookCollectionForNook(user_id);
+            var selected_book = to_reads.Where(t => t.BookId == book.BookId);
+            return selected_book.ToList().First();
         }
 
         public List<ReadingNook> GetAllReadingNooks()
@@ -113,10 +120,27 @@ namespace Bibliotopia_4._5._2.DAL
             context.SaveChanges();
         }
 
+        public void RemoveBookFromFavorites(string user_id, Book book_to_remove)
+        {
+            var nook = GetNookForGivenUser(user_id);
+            FavoriteBook fave_to_remove = context.FavoriteBooks.First(f => f.Book.BookId == book_to_remove.BookId);
+            FavoriteBook favorite_book = context.FavoriteBooks.Find(fave_to_remove.FavoriteBookId);
+            nook.FavoriteBooks.Remove(favorite_book);
+            context.SaveChanges();
+        }
+
         public void AddBookToReadBookList(string user_id, Book to_read_book)
         {
             var nook = GetNookForGivenUser(user_id);
             nook.ToReadBooks.Add(new ToReadBook { Book = to_read_book, ReadingNook = nook });
+            context.SaveChanges();
+        }
+
+        public void RemoveBookFromToReadBookList(string user_id, Book to_read_book)
+        {
+            var nook = GetNookForGivenUser(user_id);
+            ToReadBook book_to_remove = context.ToReadBooks.First(t => t.Book.BookId == to_read_book.BookId);
+            nook.ToReadBooks.Remove(book_to_remove);
             context.SaveChanges();
         }
     }
