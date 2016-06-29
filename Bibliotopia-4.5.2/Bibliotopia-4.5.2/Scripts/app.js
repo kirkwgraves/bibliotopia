@@ -23,6 +23,10 @@
       templateUrl: "NgTemplates/UserNook.html",
       controller: "NookCtrl as nookCtrl"
     })
+    .when("/preview/:googleBookId", {
+      templateUrl: "NgTemplates/Preview.html",
+      controller: "PreviewCtrl as previewCtrl"
+    })
     .otherwise("/");
 
   }]);

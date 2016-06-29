@@ -5,6 +5,7 @@
     vm.nook = null;
     vm.favoriteBooks = null;
 
+
     vm.checkForUserNook = function () {
       $http.get("/api/Nook/")
         .success(function (response) {

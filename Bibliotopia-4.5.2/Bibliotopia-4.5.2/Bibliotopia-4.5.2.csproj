@@ -252,6 +252,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="NgTemplates\BookDetail.html" />
+    <Content Include="NgTemplates\Preview.html" />
     <Content Include="NgTemplates\Home.html" />
     <Content Include="NgTemplates\ReadingNook.html" />
     <Content Include="NgTemplates\Search.html" />
@@ -1107,6 +1108,7 @@
     <Content Include="Scripts\materialize\materialize.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\NookCtrl.js" />
+    <Content Include="Scripts\PreviewCtrl.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\SearchCtrl.js" />
